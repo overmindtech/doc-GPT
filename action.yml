@@ -38,7 +38,7 @@ runs:
           echo "One or more files in the docs folder has changed."
           for file in ${{ steps.changed-files-specific.outputs.all_changed_files }}*; do npx ts-node src/createPage.ts < $file; done 
           for file in ${{ steps.changed-files-specific.outputs.all_changed_files }}*; do npx ts-node src/linksPage.ts < $file; done
-        env:
+        with:
           NOTION_API_KEY: ${{ secrets.NOTION_API_KEY }}
           OPENAI_KEY: ${{ secrets.OPENAI_KEY }}
           TYPES_DATABASE_ID: ${{ secrets.TYPES_DATABASE_ID }}
