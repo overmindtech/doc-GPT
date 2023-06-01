@@ -7,7 +7,6 @@
 	"group": "AWS",
 	"links": [
 		"autoscaling-launch-configuration",
-		"ec2-availability-zone",
-		"ec2-instance"
+		"ec2-availability-zone"
 	]
 }
