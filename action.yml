@@ -9,8 +9,8 @@ inputs:
 runs:
   using: "composite"
   steps:
-    - name: Cache Terraform Providers
-      id: cache-terraform
+    - name: Check changed files
+      id: changed-files-specific
       uses: tj-actions/changed-files@v35
       with:
         files: docs-data/**
