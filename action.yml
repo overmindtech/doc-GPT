@@ -7,8 +7,10 @@ inputs:
     description: requires changed files in doc-data
     default: 'default value if applicable'
 runs:
-  using: 'node16'
-  main: 'dist/index.js'
-  - uses: tj-actions/changed-files@v35
-    with:
-      files: docs-data/**
+  using: "composite"
+  steps:
+    - name: Cache Terraform Providers
+      id: cache-terraform
+      uses: tj-actions/changed-files@v35
+      with:
+        files: docs-data/**
