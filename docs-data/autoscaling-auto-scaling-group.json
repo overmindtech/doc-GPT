@@ -10,7 +10,6 @@
 		"ec2-availability-zone",
 		"ec2-instance",
 		"ec2-launch-template",
-		"ec2-placement-group",
-		"elbv2-target-group"
+		"ec2-placement-group"
 	]
 }
