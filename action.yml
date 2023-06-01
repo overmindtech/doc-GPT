@@ -31,16 +31,19 @@ runs:
       uses: tj-actions/changed-files@v35
       with:
         files: docs-data/**
+
     - uses: actions/setup-node@v3
       with: 
         node-version: ${{ env.NODE_VERSION }}
-    
+        
     - uses: actions/checkout@v3
-      run: |
+      with: 
+        fetch-depth: 0
+    
+    - run: |
           npm install
           npm run typecheck
-      with:
-        fetch-depth: 0
+      shell: bash
 
     - name: Run step if any file(s) in the docs folder change
       if: steps.changed-files-specific.outputs.any_changed == 'true'
