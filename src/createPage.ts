@@ -144,7 +144,7 @@ process.stdin.on("end", async () => {
       group: string,
       links: string[],
       Responses: string[],
-      combinedLinks: string[],
+      combinedLinks: string[]
     ) {
       await notion.pages.create({
         parent: {

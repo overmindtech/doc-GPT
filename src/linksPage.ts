@@ -85,7 +85,6 @@ process.stdin.on("end", async () => {
     "What is the link between",
     "Using bullet points where possible. Give me a list and a one sentence description of all keywords commonly used in relation to",
     "What are some common issues between",
-
   ];
   // used to get tailored answers
   const modelPrompt =
@@ -147,14 +146,14 @@ process.stdin.on("end", async () => {
         Responses: string[],
         heading: string,
         slug: string,
-        combined: string,
+        combined: string
       ) {
         await notion.pages.create({
           parent: {
             database_id: databaseId,
           },
           properties: {
-            "Link": {
+            Link: {
               type: "title",
               title: [
                 {
@@ -165,7 +164,7 @@ process.stdin.on("end", async () => {
                 },
               ],
             },
-            "descriptiveType": {
+            descriptiveType: {
               type: "rich_text",
               rich_text: [
                 {
@@ -176,7 +175,7 @@ process.stdin.on("end", async () => {
                 },
               ],
             },
-            "type": {
+            type: {
               type: "rich_text",
               rich_text: [
                 {
@@ -187,7 +186,7 @@ process.stdin.on("end", async () => {
                 },
               ],
             },
-            "group": {
+            group: {
               type: "rich_text",
               rich_text: [
                 {
@@ -198,7 +197,7 @@ process.stdin.on("end", async () => {
                 },
               ],
             },
-            "links": {
+            links: {
               type: "rich_text",
               rich_text: [
                 {
@@ -209,7 +208,7 @@ process.stdin.on("end", async () => {
                 },
               ],
             },
-            "Slug": {
+            Slug: {
               type: "rich_text",
               rich_text: [
                 {
@@ -220,7 +219,7 @@ process.stdin.on("end", async () => {
                 },
               ],
             },
-            "Combined": {
+            Combined: {
               type: "rich_text",
               rich_text: [
                 {
@@ -231,7 +230,7 @@ process.stdin.on("end", async () => {
                 },
               ],
             },
-            "Description": {
+            Description: {
               type: "rich_text",
               rich_text: [
                 {
@@ -242,7 +241,7 @@ process.stdin.on("end", async () => {
                 },
               ],
             },
-            "Keywords": {
+            Keywords: {
               type: "rich_text",
               rich_text: [
                 {
