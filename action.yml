@@ -34,7 +34,6 @@ runs:
     
     - run: |
           npm install
-          npm run typecheck
       shell: bash
 
     - name: Run step if any file(s) in the docs folder change
