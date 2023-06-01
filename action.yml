@@ -9,7 +9,8 @@ inputs:
 runs:
   using: 'node16'
   main: 'dist/index.js'
-  steps:
+runs:
+  using: "composite"
     - id: Get changed files in the docs folder
       uses: tj-actions/changed-files@v35
         with:
