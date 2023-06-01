@@ -9,7 +9,6 @@
 		"autoscaling-launch-configuration",
 		"ec2-availability-zone",
 		"ec2-instance",
-		"ec2-launch-template",
-		"ec2-placement-group"
+		"ec2-launch-template"
 	]
 }
