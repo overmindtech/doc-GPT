@@ -2,7 +2,7 @@ name: docGPT Generate
 description: Generates docs for Overmind sources, using doc-gen and chatGPT
 author: Overmind
 inputs:
-  milliseconds: 1000
+  milliseconds:
     required: true
     description: requires changed files in doc-data
     default: 'default value if applicable'
