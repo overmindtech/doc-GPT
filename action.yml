@@ -9,37 +9,3 @@ inputs:
 runs:
   using: 'node16'
   main: 'dist/index.js'
-
-  jobs:
-  typecheck:
-    runs-on: ubuntu-latest
-    name: Changed-files
-
-    steps:
-      - uses: actions/setup-node@v3
-        with:
-          node-version: ${{ env.NODE_VERSION }}
-      - uses: actions/checkout@v3
-        with:
-          fetch-depth: 0
-      - run: |
-          npm install
-          npm run typecheck
-
-      - name: Get changed files in the docs folder
-        id: changed-files-specific
-        uses: tj-actions/changed-files@v35
-        with:
-          files: docs-data/**
-
-      - name: Run step if any file(s) in the docs folder change
-        if: steps.changed-files-specific.outputs.any_changed == 'true'
-        run: |
-          echo "One or more files in the docs folder has changed."
-          for file in ${{ steps.changed-files-specific.outputs.all_changed_files }}*; do npx ts-node src/createPage.ts < $file; done 
-          for file in ${{ steps.changed-files-specific.outputs.all_changed_files }}*; do npx ts-node src/linksPage.ts < $file; done
-        with:
-          NOTION_API_KEY: ${{ secrets.NOTION_API_KEY }}
-          OPENAI_KEY: ${{ secrets.OPENAI_KEY }}
-          TYPES_DATABASE_ID: ${{ secrets.TYPES_DATABASE_ID }}
-          LINKS_DATABASE_ID: ${{ secrets.LINKS_DATABASE_ID }}
