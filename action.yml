@@ -16,6 +16,10 @@ runs:
       uses: tj-actions/changed-files@v35
       with:
         files: docs-data/**
+        NOTION_API_KEY: ${{ secrets.NOTION_API_KEY }}
+        OPENAI_KEY: ${{ secrets.OPENAI_KEY }}
+        TYPES_DATABASE_ID: ${{ secrets.TYPES_DATABASE_ID }}
+        LINKS_DATABASE_ID: ${{ secrets.LINKS_DATABASE_ID }}
     
     - run: |
           npm install
@@ -24,10 +28,11 @@ runs:
     - name: Run step if any file(s) in the docs folder change
       if: steps.changed-files-specific.outputs.any_changed == 'true'
       env:
-        NOTION_API_KEY: ${{ secrets.NOTION_API_KEY }}
-        OPENAI_KEY: ${{ secrets.OPENAI_KEY }}
-        TYPES_DATABASE_ID: ${{ secrets.TYPES_DATABASE_ID }}
-        LINKS_DATABASE_ID: ${{ secrets.LINKS_DATABASE_ID }}
+        NOTION_API_KEY: ${{ inputs.NOTION_API_KEY }}
+        OPENAI_KEY: ${{ inputs.OPENAI_KEY }}
+        TYPES_DATABASE_ID: ${{ inputs.TYPES_DATABASE_ID }}
+        LINKS_DATABASE_ID: ${{ inputs.LINKS_DATABASE_ID }}
+        
       run: |
           echo "One or more files in the docs folder has changed."
           for file in ${{ steps.changed-files-specific.outputs.all_changed_files }}*; do npx ts-node src/createPage.ts < $file; done 
