@@ -1,7 +1,6 @@
 name: docGPT Generate
 description: Generates docs for Overmind sources, using doc-gen and chatGPT
 author: Overmind
-
 inputs:
   NOTION_API_KEY:
     required: true
@@ -37,8 +36,3 @@ runs:
           for file in ${{ steps.changed-files-specific.outputs.all_changed_files }}*; do npx ts-node src/createPage.ts < $file; done 
           for file in ${{ steps.changed-files-specific.outputs.all_changed_files }}*; do npx ts-node src/linksPage.ts < $file; done
       shell: bash
-      with:
-          NOTION_API_KEY: ${{ inputs.NOTION_API_KEY }}
-          OPENAI_KEY: ${{ inputs.OPENAI_KEY }}
-          TYPES_DATABASE_ID: ${{ inputs.TYPES_DATABASE_ID }}
-          LINKS_DATABASE_ID: ${{ inputs.LINKS_DATABASE_ID }}
