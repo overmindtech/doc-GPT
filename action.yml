@@ -3,10 +3,21 @@ description: Generates docs for Overmind sources, using doc-gen and chatGPT
 author: Overmind
 
 inputs:
-  milliseconds:
+  NOTION_API_KEY:
     required: true
-    description: requires changed files in doc-data
-    default: 'default value if applicable'
+    description: notion api key
+
+  OPENAI_KEY:
+    required: true
+    description: OpenAi APi key
+
+  TYPES_DATABASE_ID:
+    required: true
+    description: Notion Types Database ID
+
+  LINKS_DATABASE_ID:
+    required: true
+    description: Notion Links Database ID
 
 runs:
   using: "composite"
@@ -27,8 +38,7 @@ runs:
           for file in ${{ steps.changed-files-specific.outputs.all_changed_files }}*; do npx ts-node src/linksPage.ts < $file; done
       shell: bash
       with:
-        NOTION_API_KEY: ${{ secrets.NOTION_API_KEY }}
-        OPENAI_KEY: ${{ secrets.OPENAI_KEY }}
-        TYPES_DATABASE_ID: ${{ secrets.TYPES_DATABASE_ID }}
-        LINKS_DATABASE_ID: ${{ secrets.LINKS_DATABASE_ID }}
-        
+        NOTION_API_KEY: ${{ inputs.NOTION_API_KEY }}
+        OPENAI_KEY: ${{ inputs.OPENAI_KEY }}
+        TYPES_DATABASE_ID: ${{ inputs.TYPES_DATABASE_ID }}
+        LINKS_DATABASE_ID: ${{ inputs.LINKS_DATABASE_ID }}
