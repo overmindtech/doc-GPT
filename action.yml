@@ -38,7 +38,7 @@ runs:
           for file in ${{ steps.changed-files-specific.outputs.all_changed_files }}*; do npx ts-node src/linksPage.ts < $file; done
       shell: bash
       with:
-        NOTION_API_KEY: ${{ inputs.NOTION_API_KEY }}
-        OPENAI_KEY: ${{ inputs.OPENAI_KEY }}
-        TYPES_DATABASE_ID: ${{ inputs.TYPES_DATABASE_ID }}
-        LINKS_DATABASE_ID: ${{ inputs.LINKS_DATABASE_ID }}
+          NOTION_API_KEY: ${{ inputs.NOTION_API_KEY }}
+          OPENAI_KEY: ${{ inputs.OPENAI_KEY }}
+          TYPES_DATABASE_ID: ${{ inputs.TYPES_DATABASE_ID }}
+          LINKS_DATABASE_ID: ${{ inputs.LINKS_DATABASE_ID }}
