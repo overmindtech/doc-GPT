@@ -24,10 +24,6 @@ runs:
     - name: Check changed files
       id: changed-files-specific
       uses: tj-actions/changed-files@v35
-    
-    - run: |
-          npm install
-      shell: bash
 
     - name: Run step if any file(s) in the docs folder change
       if: steps.changed-files-specific.outputs.any_changed == 'true'
